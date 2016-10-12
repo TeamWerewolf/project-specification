@@ -182,7 +182,67 @@ Level: Authenticated User may check the level in the Achievements \& Tasks Board
 \end{figure}
 
 \section{Data Model}
+\subsection{User}
+User class is Django basic authenticate model
 
+\begin{figure}
+\centering
+\begin{minipage}{.5\linewidth}
+\centering
+\includegraphics[width=0.9\linewidth, keepaspectratio]{model-user.png}
+\caption{Data Model: User}
+\label{fig:func-gamenight}
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+\centering
+\includegraphics[width=0.9\linewidth, keepaspectratio]{model-euser.png}
+\caption{Data Model: Extended User}
+\label{fig:func-gamenight}
+\end{minipage}
+\end{figure}
+
+\subsection{Extended User}
+Extended User class store the user data for website:
+\begin{enumerate}
+\item
+picture attribute store the user head picture
+\item
+user attribute store a foreign key relate to User class
+\end{enumerate}
+
+\subsection{Game}
+Game class store the data for each game:
+\begin{enumerate}
+\item
+state attribute means different states in a game, such as when state equal 0, it means the first night round
+\itemisStart attribute means whether the game has started, such as when isStart equal True, means game is start \item
+role1~12 attributes are foreign key relate to role class, means each player’s role information
+\end{enumerate}
+
+\begin{figure}
+\centering
+\begin{minipage}{.5\linewidth}
+\centering
+\includegraphics[width=0.9\linewidth, keepaspectratio]{model-game.png}
+\caption{Data Model: Game}
+\label{fig:func-gamenight}
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+\centering
+\includegraphics[width=0.9\linewidth, keepaspectratio]{model-role.png}
+\caption{Data Model: Role}
+\label{fig:func-gamenight}
+\end{minipage}
+\end{figure}
+
+\subsection{Role}
+Role class store the role information:
+\begin{enumerate}
+\item
+skillState1 attribute means whether role have used its first skill
+\itemskillState2 attributr means whether role have used its second skill
+\itemuser attribute is a foreign key relate to a extended user class
+\end{enumerate}
 
 % For many users, the previous commands will be enough.
 % If you want to directly input Unicode, add an Input Menu or Keyboard to the menu bar 
