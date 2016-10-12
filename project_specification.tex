@@ -58,70 +58,131 @@
 
 \section{Functionality}
 \subsection{Not in a Game}
-\subsubsection{Description}
-\subsubsection{UML}
+\subsubsection{Authentication}
+\begin{enumerate}
+\item
+Login: Registered Users may login to the website by correct username and password, and get authenticated and authorized
+\item
+Register: Unregistered Users may register to the website by providing username, password and email
+\item
+Activate Account: Registered User may activate the account by click the activation link in the email automatically sent when successfully registered
+\item
+Logout: Authenticated User may logout the website
+\item
+Change Password: Authenticated User may change the password by correct current password
+\item
+Reset Password: User who forget their password may reset the password by providing the email correspond to the account
+\item
+Reset Password Confirm: User may set their new password by click the link in the email automatically sent when password is successfully reset
+\end{enumerate}
+
+\subsubsection{Profiling \& Setting}
+\begin{enumerate}
+\item
+Editing User Information: Authenticated User may change the first name, last name and email
+\item
+Upload avatar: Authenticated User may upload a picture to change the avatar
+\item
+Set preference game: Authenticated User may set the preference game in the settings to skip the game choose phase in build game and matching game
+\item
+Set waiting time: Authenticated User may set the waiting time in the settings to change the default waiting time before every speech starts
+\item
+Set Music, Display and Log settings: Authenticated User may set the music volume, display settings(turn on/off camera of other user in case the network is not good enought) and log verbosity in the settings
+\end{enumerate}
+
+\subsubsection{Game Mode}
+\begin{enumerate}
+\item
+Matching Game: Authenticated User may start a matching game where different unrelated players attend
+\item
+Build Room Game: Authenticated User may build a room game where friends are invited to play game together; in the mean time, a share token is generated for other users to join
+\item
+Join Room Game: Authenticated User may join a room game by a share token
+\end{enumerate}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\linewidth, keepaspectratio]{func-index.pdf}
-\caption{Functionality: Index}
-\label{fig:func-index}
-\end{figure}
-
-\begin{figure}
+\begin{minipage}{.5\linewidth}
 \centering
-\includegraphics[width=0.7\linewidth, keepaspectratio]{func-inroom.pdf}
-\caption{Functionality: In a Room}
-\label{fig:func-inroom}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth, keepaspectratio]{func-settings.pdf}
-\caption{Functionality: Game Settings}
+\includegraphics[width=.9\linewidth]{func-settings.pdf}
+\caption{Functionality: Profiling \& Setting}
 \label{fig:func-settings}
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+\centering
+\includegraphics[width=.9\linewidth]{func-index.pdf}
+\caption{Functionality: Game Mode}
+\label{fig:func-index}
+\end{minipage}
 \end{figure}
+
+\subsubsection{Room Member}
+When Authenticated User join a Room Game, he/she automatically becomes a Room Member
+\begin{enumerate}
+\item
+Change to empty seat: Room Member may change the seat to a new one if it is empty
+\item
+Leave the room: Room Member may leave the room by clicking the Leave Button
+\item
+Chat: Room Member may chat in the room and the message can be seen by all the Room Members
+\item
+Get ready: Room Member may get ready by clicking the Ready Button(when all the Room Member is ready, the Room Owner can Start the game)
+\item
+Cancel ready: Room Member who is ready may cancel it by clicking the Cancel Button
+\end{enumerate}
+
+\subsubsection{Room Owner}
+Room Owner have the functionality of Room Member from 1 to 3. A Room Member can be selected as a Room Owner by the previous Room Owner. The original one is the user who build the room. A Room Game can only have one Room Owner. Room Owner has the extra functionalities as follow.
+\begin{enumerate}
+\item
+Set a Room Member as Room Owner: Room Owner may choose another user as the new Room Owner
+\item
+Kickout Room Member: Room Owner may kickout Room member
+\item
+Start Game: Room Owner may start the Room Game by clicking Start Button when all the Room Member is ready
+\end{enumerate}
+
+\subsubsection{Achievements \& Tasks}
+\begin{enumerate}
+\item
+Tasks: Authenticated User may receive one task a day automatically in the Achievements \& Tasks Board, and get awards by completing it. One user can hold three tasks at max
+\item
+Exchange task: Authenticated User may exchange a task one day, the new one will be different from the old one
+\item
+Winning Rate: Authenticated User may check the winning rate in the Achievements \& Tasks Board
+\item
+Time Played: Authenticated User may check the time played in the Achievements \& Tasks Board
+\item
+Level: Authenticated User may check the level in the Achievements \& Tasks Board, which is mainly based on the winning rate and time played. The level is the main dependency of Matching Game.
+\end{enumerate}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\linewidth, keepaspectratio]{func-tasks.pdf}
-\caption{Functionality: Game Achievements \& Tasks}
+\begin{minipage}{.6\linewidth}
+\centering
+\includegraphics[width=.9\linewidth]{func-inroom.pdf}
+\caption{Functionality: Room Member \& Room Owner}
+\label{fig:func-inroom}
+\end{minipage}%
+\begin{minipage}{.4\linewidth}
+\centering
+\includegraphics[width=.9\linewidth]{func-tasks.pdf}
+\caption{Functionality: Achievements \& Tasks}
 \label{fig:func-tasks}
+\end{minipage}
 \end{figure}
 
 \subsection{In a Game}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\linewidth, keepaspectratio]{func-gamenight.png}
+\includegraphics[width=0.9\linewidth, keepaspectratio]{func-gamenight.png}
 \caption{Functionality: Game in the Night}
 \label{fig:func-gamenight}
 \end{figure}
 
 \section{Data Model}
 
-\section{Wireframes}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth, keepaspectratio]{wf-mainpage.png}
-\caption{Wireframe: Main Page}
-\label{fig:main}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth, keepaspectratio]{wf-inroom.png}
-\caption{Wireframe: Game Room}
-\label{fig:room}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth, keepaspectratio]{wf-ingame.png}
-\caption{Wireframe: Game View}
-\label{fig:game}
-\end{figure}
 
 % For many users, the previous commands will be enough.
 % If you want to directly input Unicode, add an Input Menu or Keyboard to the menu bar 
