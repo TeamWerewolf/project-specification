@@ -77,6 +77,8 @@ Reset Password Confirm: User may set their new password by click the link in the
 \end{enumerate}
 
 \subsubsection{Profiling \& Setting}
+The main function is like the Figure \ref{fig:func-settings}.
+
 \begin{enumerate}
 \item
 Editing User Information: Authenticated User may change the first name, last name and email
@@ -91,6 +93,8 @@ Set Music, Display and Log settings: Authenticated User may set the music volume
 \end{enumerate}
 
 \subsubsection{Game Mode}
+The main function is like the Figure \ref{fig:func-index}.
+
 \begin{enumerate}
 \item
 Matching Game: Authenticated User may start a matching game where different unrelated players attend
@@ -117,6 +121,8 @@ Join Room Game: Authenticated User may join a room game by a share token
 \end{figure}
 
 \subsubsection{Room Member}
+The main function is like the Figure \ref{fig:func-inroom}.
+
 When Authenticated User join a Room Game, he/she automatically becomes a Room Member
 \begin{enumerate}
 \item
@@ -132,6 +138,8 @@ Cancel ready: Room Member who is ready may cancel it by clicking the Cancel Butt
 \end{enumerate}
 
 \subsubsection{Room Owner}
+The main function is like the Figure \ref{fig:func-inroom}.
+
 Room Owner have the functionality of Room Member from 1 to 3. A Room Member can be selected as a Room Owner by the previous Room Owner. The original one is the user who build the room. A Room Game can only have one Room Owner. Room Owner has the extra functionalities as follow.
 \begin{enumerate}
 \item
@@ -143,6 +151,8 @@ Start Game: Room Owner may start the Room Game by clicking Start Button when all
 \end{enumerate}
 
 \subsubsection{Achievements \& Tasks}
+The main function is like the Figure \ref{fig:func-tasks}.
+
 \begin{enumerate}
 \item
 Tasks: Authenticated User may receive one task a day automatically in the Achievements \& Tasks Board, and get awards by completing it. One user can hold three tasks at max
@@ -153,7 +163,7 @@ Winning Rate: Authenticated User may check the winning rate in the Achievements 
 \item
 Time Played: Authenticated User may check the time played in the Achievements \& Tasks Board
 \item
-Level: Authenticated User may check the level in the Achievements \& Tasks Board, which is mainly based on the winning rate and time played. The level is the main dependency of Matching Game.
+Level: Authenticated User may check the level in the Achievements \& Tasks Board, which is mainly based on the winning rate and time played. The level is the main dependency of Matching Game
 \end{enumerate}
 
 \begin{figure}
@@ -173,75 +183,211 @@ Level: Authenticated User may check the level in the Achievements \& Tasks Board
 \end{figure}
 
 \subsection{In a Game}
+When a Game starts, a Room Member automatically becomes a Player
+\subsubsection{Get Identity Card}
+Before the actual game starts, player can get a identity card which indicates different ability and winning condition in this game. All the identity is shown as follow.
+
+\begin{enumerate}
+\item
+Villager
+\item
+Werewolf
+\item
+Seer
+\item
+Witch
+\item
+Hunter
+\item
+Idiot
+\end{enumerate}
+
+\subsubsection{Day Phase}
+The main flow chart is like the Figure \ref{fig:func-dayphase}.
+
+\begin{enumerate}
+\item
+Vote: Player may vote for sheriff or exiling a player by dragging the Hand Button in the menu to the player
+
+\item
+Speech: Player may give a speech in his turn. The time of the speech is 1 minute, and player can always end speech in advance
+
+\item
+Campaign: In the first morning, player may run for the sheriff by clicking the Hat Button in the menu. The player who doesn't do that, may vote for them. (Sheriff's vote count for 2 instead of 1. If the Sheriff dies, he may decide who will be the next Sheriff)
+
+\item
+Perform skill: Player who has a special skill may choose to perform the skill in the appropriate occasion
+
+\begin{enumerate}
+\item
+Shoot to Kill: Hunter can shoot another player when dying by dragging the Gun Button in the menu to the player
+\item
+I am Idiot!: Idiot can survive when being exiled automatically
+\item
+Boom: Werewolf can explode in any stage of the game by clicking the Boom Button in the menu to interrupt the game. In that case, no more user can give a speech and the game comes directly into night phase
+\end{enumerate}
+
+\end{enumerate}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.9\linewidth, keepaspectratio]{func-gamenight.png}
-\caption{Functionality: Game in the Night}
-\label{fig:func-gamenight}
+\includegraphics[width=0.9\linewidth, keepaspectratio]{func-dayphase.pdf}
+\caption{Functionality: Day Phase}
+\label{fig:func-dayphase}
+\end{figure}
+
+\subsubsection{Night Phase}
+The main flow chart is like the Figure \ref{fig:func-nightphase}.
+
+\begin{enumerate}
+\item
+Kill: Werewolf can choose one victim to kill through dragging the Paw Button in the menu to the player. All werewolf must agree on one victim. If not agreed in two rounds, there will be no victims.
+
+\item
+Poison Potion: Witch can poison a player to death through dragging the Poison Button in the menu. The skill can only be used once and can't be used with Revive Potion in the same night
+
+\item
+Revive Potion: Witch can save the victim tonight by clicking the Antidote Button in the menu. The skill can only be used once and can't be used with Poison Potion in the same night
+
+\item
+Foresee: Seer can check whether one player is a werewolf by dragging on crystal ball in the menu to the player
+\end{enumerate}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth, keepaspectratio]{func-nightphase.png}
+\caption{Functionality: Night Phase}
+\label{fig:func-nightphase}
 \end{figure}
 
 \section{Data Model}
 \subsection{User}
-User class is Django basic authenticate model
+User class is Django basic authenticate model. See Class Diagram in Figure \ref{fig:model-user} for detail
+
+\begin{enumerate}
+\item
+first\_name: First Name
+\item
+last\_name: Last Name
+\item
+username: Username for login
+\item
+password: Password for login
+\item
+email: Email for reset password
+\end{enumerate}
 
 \begin{figure}
 \centering
 \begin{minipage}{.5\linewidth}
 \centering
-\includegraphics[width=0.9\linewidth, keepaspectratio]{model-user.png}
+\includegraphics[width=0.7\linewidth, keepaspectratio]{model-user.pdf}
 \caption{Data Model: User}
-\label{fig:func-gamenight}
+\label{fig:model-user}
 \end{minipage}%
 \begin{minipage}{.5\linewidth}
 \centering
-\includegraphics[width=0.9\linewidth, keepaspectratio]{model-euser.png}
-\caption{Data Model: Extended User}
-\label{fig:func-gamenight}
+\includegraphics[width=0.9\linewidth, keepaspectratio]{model-profile.pdf}
+\caption{Data Model: Profile}
+\label{fig:model-profile}
 \end{minipage}
 \end{figure}
 
-\subsection{Extended User}
-Extended User class store the user data for website:
+\subsection{Profile}
+Profile class store the user data for the website. See Class Diagram in Figure \ref{fig:model-profile} for detail
 \begin{enumerate}
 \item
-picture attribute store the user head picture
+user: user relation to Django Auth User
 \item
-user attribute store a foreign key relate to User class
+avatar: user avatar
+\item
+no\_game: number of games that user played
+\item
+no\_win: number of games that user won
+\item
+level: user level showing the user strength
+\item
+tasks: tasks assigned to user
+\item
+preferred\_game: user preferred game to play, shortcuts for play
+\item
+waiting\_time: the time user wait before his speech
+\item
+log\_verbosity: the log verbosity for the game state
 \end{enumerate}
 
 \subsection{Game}
-Game class store the data for each game:
+Game class store the data for each game. See Class Diagram in Figure \ref{fig:model-game} for detail
 \begin{enumerate}
 \item
-state attribute means different states in a game, such as when state equal 0, it means the first night round
-\itemisStart attribute means whether the game has started, such as when isStart equal True, means game is start \item
-role1~12 attributes are foreign key relate to role class, means each player’s role information
+state: different states in a game, such as when state equal 0, it means the first night round
+\item
+role1...12: foreign key relate to Role
 \end{enumerate}
 
 \begin{figure}
 \centering
 \begin{minipage}{.5\linewidth}
 \centering
-\includegraphics[width=0.9\linewidth, keepaspectratio]{model-game.png}
+\includegraphics[width=0.7\linewidth, keepaspectratio]{model-game.pdf}
 \caption{Data Model: Game}
-\label{fig:func-gamenight}
+\label{fig:model-game}
 \end{minipage}%
 \begin{minipage}{.5\linewidth}
 \centering
-\includegraphics[width=0.9\linewidth, keepaspectratio]{model-role.png}
+\includegraphics[width=0.9\linewidth, keepaspectratio]{model-role.pdf}
 \caption{Data Model: Role}
-\label{fig:func-gamenight}
+\label{fig:model-role}
 \end{minipage}
 \end{figure}
 
 \subsection{Role}
-Role class store the role information:
+Role class store the role information. See Class Diagram in Figure \ref{fig:model-role} for detail
 \begin{enumerate}
 \item
-skillState1 attribute means whether role have used its first skill
-\itemskillState2 attributr means whether role have used its second skill
-\itemuser attribute is a foreign key relate to a extended user class
+role: particular role
+\item
+user: foreign key relate to a Profile
+\item
+skill\_state1: whether role have used its first skill
+\item
+skill\_state2: whether role have used its second skill
+\end{enumerate}
+
+\subsection{Task}
+Task class store the particular task information. See Class Diagram in Figure \ref{fig:model-task} for detail
+\begin{enumerate}
+\item
+state: if the task is in which process
+\item
+description: task description for user
+\end{enumerate}
+
+\begin{figure}
+\centering
+\begin{minipage}{.5\linewidth}
+\centering
+\includegraphics[width=0.7\linewidth, keepaspectratio]{model-task.pdf}
+\caption{Data Model: Task}
+\label{fig:model-task}
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+\centering
+\includegraphics[width=0.7\linewidth, keepaspectratio]{model-room.pdf}
+\caption{Data Model: Room}
+\label{fig:model-room}
+\end{minipage}
+\end{figure}
+
+\subsection{Room}
+Room class store the room information. See Class Diagram in Figure \ref{fig:model-room} for detail
+\begin{enumerate}
+\item
+state: if the room is in ready, start or end state
+\item
+seat1...12: foreign key to Profile, indicates which user the seat belongs to
+\item
+owner: foreign key to Profile, indicates which user is the room owner
 \end{enumerate}
 
 % For many users, the previous commands will be enough.
