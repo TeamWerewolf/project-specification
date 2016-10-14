@@ -71,13 +71,11 @@ Logout: Authenticated User may logout the website
 \item
 Change Password: Authenticated User may change the password by correct current password
 \item
-Reset Password: User who forget their password may reset the password by providing the email correspond to the account
-\item
-Reset Password Confirm: User may set their new password by click the link in the email automatically sent when password is successfully reset
+Reset Password: User who forget their password may reset the password by providing the email correspond to the account. User may set their new password by click the link in the email automatically sent when password is successfully reset
 \end{enumerate}
 
 \subsubsection{Profiling \& Setting}
-The main function is like the Figure \ref{fig:func-settings}.
+The main workflow is shown in Figure \ref{fig:func-settings}.
 
 \begin{enumerate}
 \item
@@ -93,7 +91,7 @@ Set Music, Display and Log settings: Authenticated User may set the music volume
 \end{enumerate}
 
 \subsubsection{Game Mode}
-The main function is like the Figure \ref{fig:func-index}.
+The main workflow is shown in Figure \ref{fig:func-index}.
 
 \begin{enumerate}
 \item
@@ -121,7 +119,7 @@ Join Room Game: Authenticated User may join a room game by a share token
 \end{figure}
 
 \subsubsection{Room Member}
-The main function is like the Figure \ref{fig:func-inroom}.
+The main workflow is shown in Figure \ref{fig:func-inroom}.
 
 When Authenticated User join a Room Game, he/she automatically becomes a Room Member
 \begin{enumerate}
@@ -138,7 +136,7 @@ Cancel ready: Room Member who is ready may cancel it by clicking the Cancel Butt
 \end{enumerate}
 
 \subsubsection{Room Owner}
-The main function is like the Figure \ref{fig:func-inroom}.
+The main workflow is shown in Figure \ref{fig:func-inroom}.
 
 Room Owner have the functionality of Room Member from 1 to 3. A Room Member can be selected as a Room Owner by the previous Room Owner. The original one is the user who build the room. A Room Game can only have one Room Owner. Room Owner has the extra functionalities as follow.
 \begin{enumerate}
@@ -151,7 +149,7 @@ Start Game: Room Owner may start the Room Game by clicking Start Button when all
 \end{enumerate}
 
 \subsubsection{Achievements \& Tasks}
-The main function is like the Figure \ref{fig:func-tasks}.
+The main workflow is shown in Figure \ref{fig:func-tasks}.
 
 \begin{enumerate}
 \item
@@ -203,7 +201,7 @@ Idiot
 \end{enumerate}
 
 \subsubsection{Day Phase}
-The main flow chart is like the Figure \ref{fig:func-dayphase}.
+The main workflow is shown in Figure \ref{fig:func-dayphase}.
 
 \begin{enumerate}
 \item
@@ -213,7 +211,7 @@ Vote: Player may vote for sheriff or exiling a player by dragging the Hand Butto
 Speech: Player may give a speech in his turn. The time of the speech is 1 minute, and player can always end speech in advance
 
 \item
-Campaign: In the first morning, player may run for the sheriff by clicking the Hat Button in the menu. The player who doesn't do that, may vote for them. (Sheriff's vote count for 2 instead of 1. If the Sheriff dies, he may decide who will be the next Sheriff)
+Campaign: In the first morning, player may run for the sheriff by clicking the Hat Button in the menu. The player who doesn't do that, may vote for them. The player who run for the sheriff may cancel it by clicking the Hat Button again (Sheriff's vote count for 2 instead of 1. If the Sheriff dies, he may decide who will be the next Sheriff)
 
 \item
 Perform skill: Player who has a special skill may choose to perform the skill in the appropriate occasion
@@ -237,7 +235,7 @@ Boom: Werewolf can explode in any stage of the game by clicking the Boom Button 
 \end{figure}
 
 \subsubsection{Night Phase}
-The main flow chart is like the Figure \ref{fig:func-nightphase}.
+The main workflow is shown in Figure \ref{fig:func-nightphase}.
 
 \begin{enumerate}
 \item
@@ -301,9 +299,9 @@ user: user relation to Django Auth User
 \item
 avatar: user avatar
 \item
-no\_game: number of games that user played
+num\_game: number of games that user played
 \item
-no\_win: number of games that user won
+num\_win: number of games that user won
 \item
 level: user level showing the user strength
 \item
